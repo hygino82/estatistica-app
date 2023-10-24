@@ -9,5 +9,5 @@ export type DescriptiveItem = {
 };
 
 export type NumericListItem = {
-  list: NumericListItem[];
+  list: NumericItem[];
 };

@@ -1,14 +1,30 @@
 import { useEffect, useState } from "react";
 import { NumericItem } from "../../types/custom-types";
+import { NumericTable } from "../../components/NumericTable";
 
 export function NumericForm() {
-  const [quantidade, setQuantidade] = useState(0);
-  const [valor, setValor] = useState(0);
+  const mockList: NumericItem[] = [
+    {
+      key: 7,
+      value: 5,
+    },
+    {
+      key: 6,
+      value: 3,
+    },
+    {
+      key: 8,
+      value: 2,
+    },
+  ];
+
+  const [quantidade, setQuantidade] = useState<number>(0);
+  const [valor, setValor] = useState<number>(0);
   const [atualiza, setAtualiza] = useState<any>();
   const [lista, setLista] = useState<NumericItem[]>([]);
-  const [contador, setContador] = useState(0);
-  const [soma, setSoma] = useState(0.0);
-  const [media, setMedia] = useState(0.0);
+  const [contador, setContador] = useState<number>(0);
+  const [soma, setSoma] = useState<number>(0.0);
+  const [media, setMedia] = useState<number>(0.0);
 
   useEffect(() => {}, [atualiza]);
 
@@ -30,35 +46,34 @@ export function NumericForm() {
       value: valor,
     };
 
-    const novaLista = [...lista];
+    console.log(item);
+
+    let novaLista = [...lista];
     novaLista.push(item);
 
     setLista(novaLista);
 
-    setContador((contador) => contador + quantidade);
+    setContador((contador) => contador + item.value);
+    setSoma((soma) => soma + quantidade * valor);
+    const novaMedia: number = soma / item.value;
+    setMedia(novaMedia);
 
-    const somarValores = () => {
-      const somatorio = lista.reduce(
-        (total, valor) => total + valor.key * valor.value,
-        0
-      );
-      setSoma(somatorio);
-    };
-
-    setAtualiza(item.key);
+    mockList.map((val) => console.log(val));
   }
 
-  function clearFields() {
+  function clearFields(e: any) {
+    e.preventDefault();
     setQuantidade(0);
     setValor(0);
   }
 
-  function resetValues() {
+  function resetValues(e: any) {
+    e.preventDefault();
     setLista([]);
     setMedia(0.0);
     setContador(0);
     setSoma(0.0);
-    clearFields();
+    clearFields(e);
   }
 
   return (
@@ -94,9 +109,11 @@ export function NumericForm() {
           >
             Adicionar
           </button>
+          &nbsp;&nbsp;
           <button className="btn btn-warning" onClick={clearFields}>
             Limpar Campos
           </button>
+          &nbsp;&nbsp;
           <button className="btn btn-danger" onClick={resetValues}>
             Limpar dados
           </button>
@@ -105,6 +122,7 @@ export function NumericForm() {
         <p>Soma dos produtos {soma}</p>
         <p>Média {media}</p>
       </form>
+      <NumericTable list={mockList}/>
     </>
   );
 }

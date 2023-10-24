@@ -1,6 +1,6 @@
-import { NumericItem } from "../../types/custom-types";
+import { NumericListItem } from "../../types/custom-types";
 
-export function NumericTable(valores: NumericItem[]) {
+export function NumericTable({ list }: NumericListItem) {
   return (
     <>
       <table className="table table-striped">
@@ -12,7 +12,7 @@ export function NumericTable(valores: NumericItem[]) {
           </tr>
         </thead>
         <tbody>
-          {valores.map((item) => {
+          {list.map((item) => {
             return (
               <tr key={item.key}>
                 <th scope="row">{item.key}</th>
