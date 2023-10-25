@@ -15,8 +15,8 @@ export function NumericTable({ list }: NumericListItem) {
           {list.map((item) => {
             return (
               <tr key={item.quantity}>
-                <th scope="row">{item.quantity}</th>
-                <td>{item.value}</td>
+                <th scope="row">{item.value}</th>
+                <td>{item.quantity}</td>
                 <td>{item.value * item.quantity}</td>
               </tr>
             );
