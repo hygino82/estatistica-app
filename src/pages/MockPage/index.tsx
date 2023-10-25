@@ -1,3 +1,4 @@
+import { BarChart } from "../../components/BarChart";
 import { DataInfo } from "../../components/DataInfo";
 import { NumericTable } from "../../components/NumericTable";
 import { NumericItem } from "../../types/custom-types";
@@ -5,16 +6,16 @@ import { NumericItem } from "../../types/custom-types";
 export function MockPage() {
   const mockList: NumericItem[] = [
     {
-      key: 7,
-      value: 5,
+      quantity: 5,
+      value: 7,
     },
     {
-      key: 6,
-      value: 3,
+      quantity: 3,
+      value: 6,
     },
     {
-      key: 8,
-      value: 2,
+      quantity: 2,
+      value: 8,
     },
   ];
 
@@ -22,6 +23,7 @@ export function MockPage() {
     <>
       <DataInfo list={mockList} />
       <NumericTable list={mockList} />
+      <BarChart list={mockList} />
     </>
   );
 }

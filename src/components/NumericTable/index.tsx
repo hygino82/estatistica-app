@@ -14,10 +14,10 @@ export function NumericTable({ list }: NumericListItem) {
         <tbody>
           {list.map((item) => {
             return (
-              <tr key={item.key}>
-                <th scope="row">{item.key}</th>
+              <tr key={item.quantity}>
+                <th scope="row">{item.quantity}</th>
                 <td>{item.value}</td>
-                <td>{item.value * item.key}</td>
+                <td>{item.value * item.quantity}</td>
               </tr>
             );
           })}

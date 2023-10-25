@@ -1,30 +1,14 @@
 import { useEffect, useState } from "react";
-import { NumericItem } from "../../types/custom-types";
+import { DataInfo } from "../../components/DataInfo";
 import { NumericTable } from "../../components/NumericTable";
+import { NumericItem } from "../../types/custom-types";
 
 export function NumericForm() {
-  const mockList: NumericItem[] = [
-    {
-      key: 7,
-      value: 5,
-    },
-    {
-      key: 6,
-      value: 3,
-    },
-    {
-      key: 8,
-      value: 2,
-    },
-  ];
-
   const [quantidade, setQuantidade] = useState<number>(0);
   const [valor, setValor] = useState<number>(0);
   const [atualiza, setAtualiza] = useState<any>();
   const [lista, setLista] = useState<NumericItem[]>([]);
-  const [contador, setContador] = useState<number>(0);
-  const [soma, setSoma] = useState<number>(0.0);
-  const [media, setMedia] = useState<number>(0.0);
+  const [titulo, setTitulo] = useState<string>("");
 
   useEffect(() => {}, [atualiza]);
 
@@ -38,6 +22,11 @@ export function NumericForm() {
     setValor(Number(e.target.value));
   }
 
+  function handleTitulo(e: any) {
+    e.preventDefault();
+    setTitulo(e.target.value);
+  }
+
   function handleSubmit(e: any) {
     e.preventDefault();
 
@@ -46,19 +35,7 @@ export function NumericForm() {
       value: valor,
     };
 
-    console.log(item);
-
-    let novaLista = [...lista];
-    novaLista.push(item);
-
-    setLista(novaLista);
-
-    setContador((contador) => contador + item.value);
-    setSoma((soma) => soma + quantidade * valor);
-    const novaMedia: number = soma / item.value;
-    setMedia(novaMedia);
-
-    mockList.map((val) => console.log(val));
+    setLista([...lista, item]);
   }
 
   function clearFields(e: any) {
@@ -70,9 +47,6 @@ export function NumericForm() {
   function resetValues(e: any) {
     e.preventDefault();
     setLista([]);
-    setMedia(0.0);
-    setContador(0);
-    setSoma(0.0);
     clearFields(e);
   }
 
@@ -80,6 +54,17 @@ export function NumericForm() {
     <>
       <form>
         <div className="form-row">
+          <div className="col">
+            <label>Título</label>
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Título"
+              value={titulo}
+              onChange={handleTitulo}
+              minLength={3}
+            />
+          </div>
           <div className="col">
             <label>Valor</label>
             <input
@@ -118,11 +103,11 @@ export function NumericForm() {
             Limpar dados
           </button>
         </div>
-        <p>Quantidade adicionada {contador}</p>
-        <p>Soma dos produtos {soma}</p>
-        <p>Média {media}</p>
       </form>
-      <NumericTable list={mockList}/>
+      <h3>{titulo.toUpperCase()}</h3>
+      <DataInfo list={lista} />
+      <NumericTable list={lista} />
+
     </>
   );
 }

@@ -1,5 +1,5 @@
 export type NumericItem = {
-  key: number;
+  quantity: number;
   value: number;
 };
 

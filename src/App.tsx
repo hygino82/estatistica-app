@@ -4,7 +4,7 @@ import { MockPage } from "./pages/MockPage";
 function App() {
   return (
     <>
-      <MockPage/>
+      <MockPage />
     </>
   );
 }
