@@ -1,31 +1,5 @@
 import { NumericItem, NumericListItem, TableValues } from "../types/custom-types";
 
-let data: NumericListItem = {
-    list: [
-        {
-            quantity: 5,
-            value: 7,
-        },
-        {
-            quantity: 3,
-            value: 6,
-        },
-        {
-            quantity: 2,
-            value: 8,
-        },
-        {
-            quantity: 10,
-            value: 8,
-        },
-        {
-            quantity: 3,
-            value: 5,
-        },
-
-    ]
-}
-
 export function agruparSemelhantes(data: NumericItem[]): NumericItem[] {
     let listaAgrupada: NumericItem[] = [];
 
