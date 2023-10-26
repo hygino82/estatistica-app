@@ -1,5 +1,5 @@
 import { NumericListItem, TableValues } from "../../types/custom-types";
-import { generateTableValues, mediaPonderada } from "../../utils/tools";
+import { generateTableValues } from "../../utils/tools";
 
 export function NumericTable({ list }: NumericListItem) {
   const data: TableValues[] = generateTableValues(list);

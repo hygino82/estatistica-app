@@ -1,15 +1,14 @@
 import { useEffect, useState } from "react";
-import { DataInfo } from "../../components/DataInfo";
+import { BarChart } from "../../components/BarChart";
 import { NumericTable } from "../../components/NumericTable";
+import { PieChart } from "../../components/PieChart";
 import { NumericItem } from "../../types/custom-types";
 import { agruparSemelhantes, ordenarLista } from "../../utils/tools";
-import { PieChart } from "../../components/PieChart";
-import { BarChart } from "../../components/BarChart";
 
 export function NumericForm() {
   const [quantidade, setQuantidade] = useState<number>(0);
   const [valor, setValor] = useState<number>(0);
-  const [atualiza, setAtualiza] = useState<any>();
+  const atualiza = useState<any>();
   const [lista, setLista] = useState<NumericItem[]>([]);
   const [titulo, setTitulo] = useState<string>("");
 
