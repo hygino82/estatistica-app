@@ -1,10 +1,10 @@
 import Chart from "react-apexcharts";
 import { NumericListItem } from "../../types/custom-types";
 
-type SeriesData = {
+/*type SeriesData = {
   name: string;
   data: number[];
-};
+};*/
 
 /*type ChartData = {
   labels: {
