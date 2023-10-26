@@ -6,7 +6,7 @@ type ChartData = {
   series: number[];
 };
 
-export const DonutChart = ({ list }: NumericListItem) => {
+export const PieChart = ({ list }: NumericListItem) => {
   const myLabels = list.map((x) => x.value.toString());
   const mySeries = list.map((x) => x.quantity);
 
@@ -25,7 +25,7 @@ export const DonutChart = ({ list }: NumericListItem) => {
     <Chart
       options={{ ...options, labels: chartData.labels }}
       series={chartData.series}
-      type="donut"
+      type="pie"
       height="240"
     />
   );

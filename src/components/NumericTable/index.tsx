@@ -26,8 +26,8 @@ export function NumericTable({ list }: NumericListItem) {
                   <td>{item.quantity}</td>
                   <td>{item.value * item.quantity}</td>
                   <td>{item.quadDif}</td>
-                  <td>{item.percentual.toFixed(2)}%</td>
-                  <td>{item.angle.toFixed(2)}º</td>
+                  <td>{item.percentual.toFixed(1)}%</td>
+                  <td>{item.angle.toFixed(1)}º</td>
                 </tr>
               );
             })}
