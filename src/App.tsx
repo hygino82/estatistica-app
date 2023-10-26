@@ -1,10 +1,10 @@
 import "./App.css";
-import { MockPage } from "./pages/MockPage";
+import { NumericForm } from "./pages/NumericForm";
 
 function App() {
   return (
     <>
-      <MockPage />
+      <NumericForm/>
     </>
   );
 }

@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import { DataInfo } from "../../components/DataInfo";
 import { NumericTable } from "../../components/NumericTable";
 import { NumericItem } from "../../types/custom-types";
+import { agruparSemelhantes, ordenarLista } from "../../utils/tools";
+import { PieChart } from "../../components/PieChart";
+import { BarChart } from "../../components/BarChart";
 
 export function NumericForm() {
   const [quantidade, setQuantidade] = useState<number>(0);
@@ -31,7 +34,7 @@ export function NumericForm() {
     e.preventDefault();
 
     const item: NumericItem = {
-      key: quantidade,
+      quantity: quantidade,
       value: valor,
     };
 
@@ -50,6 +53,7 @@ export function NumericForm() {
     clearFields(e);
   }
 
+  const sortedList = ordenarLista(agruparSemelhantes(lista));
   return (
     <>
       <form>
@@ -105,9 +109,9 @@ export function NumericForm() {
         </div>
       </form>
       <h3>{titulo.toUpperCase()}</h3>
-      <DataInfo list={lista} />
-      <NumericTable list={lista} />
-
+      <NumericTable list={sortedList} />
+      <BarChart list={sortedList} />
+      <PieChart list={sortedList} />
     </>
   );
 }

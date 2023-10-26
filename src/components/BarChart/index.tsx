@@ -1,4 +1,3 @@
-import { useState } from "react";
 import Chart from "react-apexcharts";
 import { NumericListItem } from "../../types/custom-types";
 
@@ -24,7 +23,7 @@ export function BarChart({ list }: NumericListItem) {
     },
     series: [
       {
-        name: "% Success",
+        name: "Quantidade",
         data: mySeries,
       },
     ],
@@ -37,15 +36,17 @@ export function BarChart({ list }: NumericListItem) {
       },
     },
   };
-
-  return (
-    <Chart
-      options={{ ...options, xaxis: chartData.labels }}
-      series={chartData.series}
-      type="bar"
-      height="240"
-    />
-  );
+  console.log(`Elementos na lista :${list.length}`);
+  if (list.length != 0) {
+    return (
+      <Chart
+        options={{ ...options, xaxis: chartData.labels }}
+        series={chartData.series}
+        type="bar"
+        height="240"
+      />
+    );
+  }
 }
 
 //export default BarChart;

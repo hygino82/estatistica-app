@@ -21,12 +21,14 @@ export const PieChart = ({ list }: NumericListItem) => {
     },
   };
 
-  return (
-    <Chart
-      options={{ ...options, labels: chartData.labels }}
-      series={chartData.series}
-      type="pie"
-      height="240"
-    />
-  );
+  if (list.length != 0) {
+    return (
+      <Chart
+        options={{ ...options, labels: chartData.labels }}
+        series={chartData.series}
+        type="pie"
+        height="240"
+      />
+    );
+  }
 };
