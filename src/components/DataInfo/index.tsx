@@ -23,12 +23,26 @@ export function DataInfo({ list }: NumericListItem) {
     return media;
   };
 
+  function desvioPadrao() {
+    const media = calcularMedia();
+    let somaQuadrados = 0.0;
+    let quantidade = 0.0;
+    list.map(obj => {
+      somaQuadrados += Math.pow(obj.value - media, 2.0) * obj.quantity;
+      quantidade += obj.quantity;
+    });
+
+    const desvio = Math.sqrt(somaQuadrados / quantidade);
+    return desvio;
+  }
+
   return (
     <>
       <h3>Análise dos dados obtidos</h3>
       <p>Soma {somarValores().toFixed(4)}</p>
       <p>Quantidade adicionada {somarQuantidade()}</p>
       <p>Média {calcularMedia().toFixed(4)}</p>
+      <p>Desvio padrão {desvioPadrao().toFixed(4)}</p>
     </>
   );
 }

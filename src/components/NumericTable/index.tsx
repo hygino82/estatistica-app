@@ -1,6 +1,9 @@
-import { NumericListItem } from "../../types/custom-types";
+import { NumericListItem, TableValues } from "../../types/custom-types";
+import { generateTableValues, mediaPonderada } from "../../utils/tools";
 
 export function NumericTable({ list }: NumericListItem) {
+  const data: TableValues[] = generateTableValues(list);
+
   return (
     <>
       <table className="table table-striped">
@@ -9,18 +12,25 @@ export function NumericTable({ list }: NumericListItem) {
             <th scope="col">Valor</th>
             <th scope="col">Quantidade</th>
             <th scope="col">Produto</th>
+            <th scope="col">Quadrado Diferença</th>
+            <th scope="col">Perceltual</th>
+            <th scope="col">Graus</th>
           </tr>
         </thead>
         <tbody>
-          {list.map((item) => {
-            return (
-              <tr key={item.quantity}>
-                <th scope="row">{item.value}</th>
-                <td>{item.quantity}</td>
-                <td>{item.value * item.quantity}</td>
-              </tr>
-            );
-          })}
+          {
+            data.map((item) => {
+              return (
+                <tr key={item.quantity}>
+                  <th scope="row">{item.value}</th>
+                  <td>{item.quantity}</td>
+                  <td>{item.value * item.quantity}</td>
+                  <td>{item.quadDif}</td>
+                  <td>{item.percentual.toFixed(2)}%</td>
+                  <td>{item.angle.toFixed(2)}º</td>
+                </tr>
+              );
+            })}
         </tbody>
       </table>
     </>

@@ -2,7 +2,7 @@ import { BarChart } from "../../components/BarChart";
 import { DataInfo } from "../../components/DataInfo";
 import { NumericTable } from "../../components/NumericTable";
 import { NumericItem } from "../../types/custom-types";
-import { agruparSemelhantes } from "../../utils/tools";
+import { agruparSemelhantes, ordenarLista } from "../../utils/tools";
 
 export function MockPage() {
   const mockList: NumericItem[] = [
@@ -19,16 +19,21 @@ export function MockPage() {
       value: 8,
     },
     {
-      quantity: 10,
+      quantity: 4,
       value: 8,
     },
     {
       quantity: 5,
       value: 4,
     },
+    {
+      quantity: 15,
+      value: 2,
+    },
+
   ];
 
-  const sortedList = agruparSemelhantes(mockList);
+  const sortedList = ordenarLista(agruparSemelhantes(mockList));
   return (
     <>
       <DataInfo list={sortedList} />

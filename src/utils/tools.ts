@@ -1,4 +1,4 @@
-import { NumericItem, NumericListItem } from "../types/custom-types";
+import { NumericItem, NumericListItem, TableValues } from "../types/custom-types";
 
 let data: NumericListItem = {
     list: [
@@ -64,6 +64,39 @@ export function ordenarLista(data: NumericItem[]): NumericItem[] {
     return lista;
 }
 
-//const lista = agruparSemelhantes(data);
-//lista.map(x => console.log(x));
+export function mediaPonderada(data: NumericItem[]): number {
+    let soma = 0.0;
+    let quantidade = 0.0;
+    data.map(item => {
+        soma += item.quantity * item.value;
+        quantidade += item.quantity;
+    });
+    const media: number = soma / quantidade;
+    return media;
+}
 
+export function generateTableValues(data: NumericItem[]): TableValues[] {
+    const media: number = mediaPonderada(data);
+    const quantidade = quantidadeTotalElementos(data);
+    let valores: TableValues[] = [];
+
+    data.map(item => {
+        valores.push({
+            quantity: item.quantity,
+            value: item.value,
+            quadDif: Math.pow(media - item.value, 2) * item.quantity,
+            percentual: item.quantity * 100.0 / quantidade,
+            angle: item.quantity * 360.0 / quantidade,
+        })
+    })
+
+    return valores;
+}
+
+function quantidadeTotalElementos(data: NumericItem[]) {
+    let quantidade = 0.0;
+    data.map(item => {
+        quantidade += item.quantity;
+    });
+    return quantidade;
+}

@@ -11,3 +11,11 @@ export type DescriptiveItem = {
 export type NumericListItem = {
   list: NumericItem[];
 };
+
+export type TableValues = {
+  quantity: number;
+  value: number;
+  quadDif: number;
+  percentual: number;
+  angle: number;
+}
