@@ -15,8 +15,8 @@ type ChartData = {
 };
 
 export function BarChart({ list }: NumericListItem) {
-  const myLabels = list.map((x) => x.quantity);
-  const mySeries = list.map((x) => x.value);
+  const myLabels = list.map((x) => x.value);
+  const mySeries = list.map((x) => x.quantity);
 
   const chartData = {
     labels: {
