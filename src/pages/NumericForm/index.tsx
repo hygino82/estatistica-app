@@ -4,6 +4,7 @@ import { NumericTable } from "../../components/NumericTable";
 import { PieChart } from "../../components/PieChart";
 import { NumericItem } from "../../types/custom-types";
 import { agruparSemelhantes, ordenarLista } from "../../utils/tools";
+import { DataInfo } from "../../components/DataInfo";
 
 export function NumericForm() {
   const [quantidade, setQuantidade] = useState<number>(0);
@@ -108,6 +109,7 @@ export function NumericForm() {
         </div>
       </form>
       <h3>{titulo.toUpperCase()}</h3>
+      <DataInfo list={sortedList}/>
       <NumericTable list={sortedList} />
       <BarChart list={sortedList} />
       <PieChart list={sortedList} />
