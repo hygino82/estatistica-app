@@ -1,4 +1,4 @@
-import { NumericItem, NumericListItem, TableValues } from "../types/custom-types";
+import { NumericItem, TableValues } from "../types/custom-types";
 
 export function agruparSemelhantes(data: NumericItem[]): NumericItem[] {
     let listaAgrupada: NumericItem[] = [];
