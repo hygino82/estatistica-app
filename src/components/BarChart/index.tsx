@@ -6,12 +6,12 @@ type SeriesData = {
   data: number[];
 };
 
-type ChartData = {
+/*type ChartData = {
   labels: {
     categories: number[];
   };
   series: SeriesData[];
-};
+};*/
 
 export function BarChart({ list }: NumericListItem) {
   const myLabels = list.map((x) => x.value);
