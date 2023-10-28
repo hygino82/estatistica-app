@@ -29,4 +29,10 @@ public class NumericItemServiceImpl implements NumericItemService {
         Page<NumericItem> page = this.numericitemRepository.findAll(pageable);
         return page.map(NumericItemDTO::new);
     }
+
+    @Override
+    public NumericItemDTO getItemById(Long id) {
+        NumericItem entity = this.numericitemRepository.getItemById(id).orElseThrow(() -> new IllegalArgumentException("Id: " + id + " not found"));
+        return new NumericItemDTO(entity);
+    }
 }

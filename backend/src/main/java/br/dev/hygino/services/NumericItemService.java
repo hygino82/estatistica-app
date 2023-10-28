@@ -9,4 +9,6 @@ public interface NumericItemService {
     NumericItemDTO insert(NumericItemInsertDTO dto);
 
     Page<NumericItemDTO> findAll(Pageable pageable);
+
+    NumericItemDTO getItemById(Long id);
 }

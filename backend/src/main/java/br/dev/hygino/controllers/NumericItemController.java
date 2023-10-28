@@ -28,4 +28,9 @@ public class NumericItemController {
     public ResponseEntity<Page<NumericItemDTO>> findAll(Pageable pageable) {
         return ResponseEntity.status(HttpStatus.OK).body(this.numericItemService.findAll(pageable));
     }
+
+    @GetMapping("/{id}")
+    ResponseEntity<NumericItemDTO> getItemById(@PathVariable("id") Long id) {
+        return ResponseEntity.status(HttpStatus.OK).body(this.numericItemService.getItemById(id));
+    }
 }
