@@ -1,5 +1,12 @@
 package br.dev.hygino.services.impl;
 
+import java.util.Optional;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import br.dev.hygino.dtos.NumericItemDTO;
 import br.dev.hygino.dtos.NumericItemInsertDTO;
 import br.dev.hygino.entities.NumericItem;
@@ -7,11 +14,6 @@ import br.dev.hygino.repositories.NumericitemRepository;
 import br.dev.hygino.services.NumericItemService;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.Valid;
-
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class NumericItemServiceImpl implements NumericItemService {
@@ -24,9 +26,21 @@ public class NumericItemServiceImpl implements NumericItemService {
     @Override
     @Transactional
     public NumericItemDTO insert(NumericItemInsertDTO dto) {
-        NumericItem entity = new NumericItem(dto.value(), dto.quantity());
-        entity = this.numericitemRepository.saveAndFlush(entity);
-        return new NumericItemDTO(entity);
+        try {
+            NumericItem entity;
+            Optional<NumericItem> optional = this.numericitemRepository.getItemByValue(dto.value());
+
+            if (optional.isPresent()) {
+                entity = optional.get();
+                entity.setQuantity(entity.getQuantity() + dto.quantity());
+            } else {
+                entity = new NumericItem(dto.value(), dto.quantity());
+            }
+            entity = this.numericitemRepository.saveAndFlush(entity);
+            return new NumericItemDTO(entity);
+        } catch (Exception e) {
+            throw new RuntimeException(e.getMessage());
+        }
     }
 
     @Override

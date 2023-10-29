@@ -10,4 +10,7 @@ import br.dev.hygino.entities.NumericItem;
 public interface NumericitemRepository extends JpaRepository<NumericItem, Long> {
     @Query("SELECT obj FROM NumericItem obj WHERE obj.id =:id")
     Optional<NumericItem> getItemById(Long id);
+
+    @Query("SELECT obj FROM NumericItem obj WHERE obj.value =:value")
+    Optional<NumericItem> getItemByValue(Double value);
 }
