@@ -1,11 +1,11 @@
 package br.dev.hygino.repositories;
 
-import br.dev.hygino.entities.NumericItem;
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import java.util.Optional;
-import java.util.UUID;
+import br.dev.hygino.entities.NumericItem;
 
 public interface NumericitemRepository extends JpaRepository<NumericItem, Long> {
     @Query("SELECT obj FROM NumericItem obj WHERE obj.id =:id")

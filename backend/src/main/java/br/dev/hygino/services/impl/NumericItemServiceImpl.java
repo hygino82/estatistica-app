@@ -11,6 +11,7 @@ import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class NumericItemServiceImpl implements NumericItemService {
@@ -21,6 +22,7 @@ public class NumericItemServiceImpl implements NumericItemService {
     }
 
     @Override
+    @Transactional
     public NumericItemDTO insert(NumericItemInsertDTO dto) {
         NumericItem entity = new NumericItem(dto.value(), dto.quantity());
         entity = this.numericitemRepository.saveAndFlush(entity);
@@ -28,12 +30,14 @@ public class NumericItemServiceImpl implements NumericItemService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Page<NumericItemDTO> findAll(Pageable pageable) {
         Page<NumericItem> page = this.numericitemRepository.findAll(pageable);
         return page.map(NumericItemDTO::new);
     }
 
     @Override
+    @Transactional(readOnly = true)
     public NumericItemDTO getItemById(Long id) {
         NumericItem entity = this.numericitemRepository.getItemById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Id: " + id + " not found"));
@@ -46,6 +50,7 @@ public class NumericItemServiceImpl implements NumericItemService {
     }
 
     @Override
+    @Transactional
     public NumericItemDTO update(Long id, @Valid NumericItemInsertDTO dto) {
         try {
             NumericItem entity = this.numericitemRepository.getReferenceById(id);
