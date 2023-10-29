@@ -2,6 +2,7 @@ package br.dev.hygino.controllers;
 
 import br.dev.hygino.dtos.NumericItemDTO;
 import br.dev.hygino.dtos.NumericItemInsertDTO;
+import br.dev.hygino.dtos.StatisticInfo;
 import br.dev.hygino.services.NumericItemService;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
@@ -44,5 +45,10 @@ public class NumericItemController {
     public ResponseEntity<NumericItemDTO> update(@PathVariable("id") Long id,
             @RequestBody @Valid NumericItemInsertDTO dto) {
         return ResponseEntity.status(HttpStatus.OK).body(this.numericItemService.update(id, dto));
+    }
+
+    @GetMapping("/result")
+    public ResponseEntity<StatisticInfo> getResult() {
+        return ResponseEntity.ok(this.numericItemService.getResult());
     }
 }

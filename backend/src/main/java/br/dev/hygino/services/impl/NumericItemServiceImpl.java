@@ -1,5 +1,6 @@
 package br.dev.hygino.services.impl;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.domain.Page;
@@ -9,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import br.dev.hygino.dtos.NumericItemDTO;
 import br.dev.hygino.dtos.NumericItemInsertDTO;
+import br.dev.hygino.dtos.StatisticInfo;
 import br.dev.hygino.entities.NumericItem;
 import br.dev.hygino.repositories.NumericitemRepository;
 import br.dev.hygino.services.NumericItemService;
@@ -75,5 +77,29 @@ public class NumericItemServiceImpl implements NumericItemService {
         } catch (EntityNotFoundException e) {
             throw new IllegalArgumentException("Id: " + id + " not found");
         }
+    }
+
+    @Override
+    public StatisticInfo getResult() {
+        double soma = 0.0;
+        double quantidade = 0.0;
+        double somaQuad = 0.0;
+        List<NumericItem> list = this.numericitemRepository.findAll();
+
+        for (NumericItem item : list) {
+            soma += item.getQuantity() * item.getValue();
+            quantidade += item.getQuantity();
+        }
+
+        double media = soma / quantidade;
+
+        for (NumericItem item : list) {
+            somaQuad += Math.pow(item.getValue() - media, 2.0);
+        }
+
+        double variancia = somaQuad / quantidade;
+        double desvioPadrao = Math.sqrt(variancia);
+
+        return new StatisticInfo(media, soma, variancia, desvioPadrao);
     }
 }

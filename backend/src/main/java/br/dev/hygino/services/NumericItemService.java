@@ -2,6 +2,7 @@ package br.dev.hygino.services;
 
 import br.dev.hygino.dtos.NumericItemDTO;
 import br.dev.hygino.dtos.NumericItemInsertDTO;
+import br.dev.hygino.dtos.StatisticInfo;
 import jakarta.validation.Valid;
 
 import org.springframework.data.domain.Page;
@@ -17,4 +18,6 @@ public interface NumericItemService {
     void remove(Long id);
 
     NumericItemDTO update(Long id, @Valid NumericItemInsertDTO dto);
+
+    StatisticInfo getResult();
 }
