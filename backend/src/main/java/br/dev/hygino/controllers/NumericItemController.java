@@ -33,4 +33,16 @@ public class NumericItemController {
     ResponseEntity<NumericItemDTO> getItemById(@PathVariable("id") Long id) {
         return ResponseEntity.status(HttpStatus.OK).body(this.numericItemService.getItemById(id));
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> remove(@PathVariable("id") Long id) {
+        this.numericItemService.remove(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<NumericItemDTO> update(@PathVariable("id") Long id,
+            @RequestBody @Valid NumericItemInsertDTO dto) {
+        return ResponseEntity.status(HttpStatus.OK).body(this.numericItemService.update(id, dto));
+    }
 }

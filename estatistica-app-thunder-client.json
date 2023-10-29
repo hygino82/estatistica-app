@@ -1,0 +1,97 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "API Estatística",
+    "dateExported": "2023-10-29T01:28:56.308Z",
+    "version": "1.1",
+    "folders": [
+        {
+            "_id": "54bb32a2-88e5-4bda-b259-662b6759daa5",
+            "name": "Numeric Item",
+            "containerId": "",
+            "created": "2023-10-29T01:10:44.305Z",
+            "sortNum": 10000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "e1c683b6-fd66-47c8-ab97-5516a6fc5621",
+            "colId": "21c2eb78-108e-4d18-8789-f6312b0adbc3",
+            "containerId": "54bb32a2-88e5-4bda-b259-662b6759daa5",
+            "name": "Insert",
+            "url": "http://localhost:8080/api/v1/numeric",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2023-10-29T01:10:53.833Z",
+            "modified": "2023-10-29T01:17:34.617Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"value\": 9.5,\n  \"quantity\": 3\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "de126410-580e-4142-ad91-94c564b6e920",
+            "colId": "21c2eb78-108e-4d18-8789-f6312b0adbc3",
+            "containerId": "54bb32a2-88e5-4bda-b259-662b6759daa5",
+            "name": "Find all",
+            "url": "{{host}}/numeric",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2023-10-29T01:18:38.952Z",
+            "modified": "2023-10-29T01:19:28.973Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "04c77e78-bde2-4b85-8a2f-a409b222f452",
+            "colId": "21c2eb78-108e-4d18-8789-f6312b0adbc3",
+            "containerId": "54bb32a2-88e5-4bda-b259-662b6759daa5",
+            "name": "Update",
+            "url": "{{host}}/numeric/4",
+            "method": "PUT",
+            "sortNum": 30000,
+            "created": "2023-10-29T01:19:37.448Z",
+            "modified": "2023-10-29T01:21:48.057Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"value\": 7.3,\n  \"quantity\": 5\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "3b0d3988-7a98-4eaf-9534-784d976d367a",
+            "colId": "21c2eb78-108e-4d18-8789-f6312b0adbc3",
+            "containerId": "54bb32a2-88e5-4bda-b259-662b6759daa5",
+            "name": "Find by Id",
+            "url": "{{host}}/numeric/4",
+            "method": "GET",
+            "sortNum": 40000,
+            "created": "2023-10-29T01:20:48.892Z",
+            "modified": "2023-10-29T01:20:48.892Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "feed318b-2c4f-439b-903d-04f72ff76f27",
+            "colId": "21c2eb78-108e-4d18-8789-f6312b0adbc3",
+            "containerId": "54bb32a2-88e5-4bda-b259-662b6759daa5",
+            "name": "Delete By Id",
+            "url": "{{host}}/numeric/4",
+            "method": "DELETE",
+            "sortNum": 50000,
+            "created": "2023-10-29T01:27:15.444Z",
+            "modified": "2023-10-29T01:28:15.891Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        }
+    ]
+}
