@@ -1,10 +1,10 @@
 import "./App.css";
-import { NumericForm } from "./pages/NumericForm";
+import { MockDescriptivePage } from "./pages/MockDescriptivePage";
 
 function App() {
   return (
     <>
-      <NumericForm/>
+      <MockDescriptivePage />
     </>
   );
 }

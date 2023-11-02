@@ -1,13 +1,13 @@
 import Chart from "react-apexcharts";
-import { NumericListItem } from "../../types/custom-types";
+import { DescriptiveItemList, NumericListItem } from "../../types/custom-types";
 
 type ChartData = {
   labels: string[];
   series: number[];
 };
 
-export const PieChart = ({ list }: NumericListItem) => {
-  const myLabels = list.map((x) => x.value.toString());
+export const PieChart = ({ list }: NumericListItem | DescriptiveItemList) => {
+  let myLabels = list.map((x) => x.value.toString());
   const mySeries = list.map((x) => x.quantity);
 
   const chartData: ChartData = {

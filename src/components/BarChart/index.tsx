@@ -1,19 +1,9 @@
 import Chart from "react-apexcharts";
-import { NumericListItem } from "../../types/custom-types";
+import { DescriptiveItemList, NumericListItem } from "../../types/custom-types";
 
-/*type SeriesData = {
-  name: string;
-  data: number[];
-};*/
 
-/*type ChartData = {
-  labels: {
-    categories: number[];
-  };
-  series: SeriesData[];
-};*/
 
-export function BarChart({ list }: NumericListItem) {
+export function BarChart({ list }: NumericListItem | DescriptiveItemList) {
   const myLabels = list.map((x) => x.value);
   const mySeries = list.map((x) => x.quantity);
 

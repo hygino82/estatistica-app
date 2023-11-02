@@ -1,76 +1,125 @@
-import { NumericItem, TableValues } from "../types/custom-types";
+import {
+  DescriptiveElement,
+  DescriptiveItem,
+  NumericItem,
+  TableValues,
+} from "../types/custom-types";
 
 export function agruparSemelhantes(data: NumericItem[]): NumericItem[] {
-    let listaAgrupada: NumericItem[] = [];
+  let listaAgrupada: NumericItem[] = [];
 
-    const objetoAgrupadoESomado = data.reduce((agrupado, objeto) => {
-        const grupo = objeto.value;
+  const objetoAgrupadoESomado = data.reduce((agrupado, objeto) => {
+    const grupo = objeto.value;
 
-        if (!agrupado[grupo]) {
-            agrupado[grupo] = { grupo, soma: 0 };
-        }
+    if (!agrupado[grupo]) {
+      agrupado[grupo] = { grupo, soma: 0 };
+    }
 
-        agrupado[grupo].soma += objeto.quantity;
-        return agrupado;
-    }, {} as Record<number, { grupo: number; soma: number }>);
+    agrupado[grupo].soma += objeto.quantity;
+    return agrupado;
+  }, {} as Record<number, { grupo: number; soma: number }>);
 
-    const objetoAgrupadoESomadoArray = Object.values(objetoAgrupadoESomado);
-    objetoAgrupadoESomadoArray.map(x => {
-        listaAgrupada.push({
-            value: x.grupo,
-            quantity: x.soma
-        })
+  const objetoAgrupadoESomadoArray = Object.values(objetoAgrupadoESomado);
+  objetoAgrupadoESomadoArray.map((x) => {
+    listaAgrupada.push({
+      value: x.grupo,
+      quantity: x.soma,
     });
+  });
 
-    return listaAgrupada;
-
+  return listaAgrupada;
 }
 
 export function ordenarLista(data: NumericItem[]): NumericItem[] {
-    const minhaLista = data.sort((a, b) => a.value - b.value);
-    let lista: NumericItem[] = [];
-    minhaLista.map(obj => {
-        lista.push({
-            value: obj.value,
-            quantity: obj.quantity
-        })
+  const minhaLista = data.sort((a, b) => a.value - b.value);
+  let lista: NumericItem[] = [];
+  minhaLista.map((obj) => {
+    lista.push({
+      value: obj.value,
+      quantity: obj.quantity,
     });
-    return lista;
+  });
+  return lista;
 }
 
 export function mediaPonderada(data: NumericItem[]): number {
-    let soma = 0.0;
-    let quantidade = 0.0;
-    data.map(item => {
-        soma += item.quantity * item.value;
-        quantidade += item.quantity;
+  let soma = 0.0;
+  let quantidade = 0.0;
+  data.map((item) => {
+    soma += item.quantity * item.value;
+    quantidade += item.quantity;
+  });
+  const media: number = soma / quantidade;
+  return media;
+}
+
+export function generateDescriptiveTableValues(
+  data: DescriptiveItem[]
+): DescriptiveElement[] {
+  const amount: number = getTotalElements(data).quantidade;
+  let elements: DescriptiveElement[] = [];
+
+  data.map((item) => {
+    elements.push({
+      quantity: item.quantity,
+      value: item.value,
+      percentual: (item.quantity * 100.0) / amount,
+      angle: (item.quantity * 360.0) / amount,
     });
-    const media: number = soma / quantidade;
-    return media;
+  });
+
+  return elements;
 }
 
-export function generateTableValues(data: NumericItem[]): TableValues[] {
-    const media: number = mediaPonderada(data);
-    const quantidade = quantidadeTotalElementos(data);
-    let valores: TableValues[] = [];
+export function generateTableValues(
+  data: NumericItem[],
+  descriptive: boolean
+): TableValues[] {
+  const media: number = mediaPonderada(data);
+  const quantidade = getTotalElements(data).quantidade;
+  let valores: TableValues[] = [];
 
-    data.map(item => {
-        valores.push({
-            quantity: item.quantity,
-            value: item.value,
-            quadDif: Math.pow(media - item.value, 2) * item.quantity,
-            percentual: item.quantity * 100.0 / quantidade,
-            angle: item.quantity * 360.0 / quantidade,
-        })
-    })
-
-    return valores;
-}
-
-function quantidadeTotalElementos(data: NumericItem[]) {
-    let quantidade = 0.0;
-    data.map(item => {
-        quantidade += item.quantity;
+  data.map((item) => {
+    valores.push({
+      quantity: item.quantity,
+      value: item.value,
+      quadDif: !descriptive
+        ? Math.pow(media - item.value, 2) * item.quantity
+        : undefined,
+      percentual: (item.quantity * 100.0) / quantidade,
+      angle: (item.quantity * 360.0) / quantidade,
     });
-    return quantidade;
+  });
+
+  return valores;
 }
+
+export function getTotalElements(
+  data: NumericItem[] | DescriptiveItem[]
+): QuantidadeModa {
+  let maior = 1;
+  let moda: string[] = [];
+  let quantidade = 0.0;
+
+  data.map((item) => {
+    quantidade += item.quantity;
+    if (item.quantity > maior) {
+      maior = item.quantity;
+    }
+  });
+
+  data.map((item) => {
+    if (item.quantity == maior) {
+      moda.push(item.value.toString());
+    }
+  });
+  return {
+    quantidade: quantidade,
+    moda: moda,
+  };
+}
+
+type QuantidadeModa = {
+  quantidade: number;
+  moda: string[];
+};
