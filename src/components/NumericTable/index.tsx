@@ -2,7 +2,7 @@ import { NumericListItem, TableValues } from "../../types/custom-types";
 import { generateTableValues } from "../../utils/tools";
 
 export function NumericTable({ list }: NumericListItem) {
-  const data: TableValues[] = generateTableValues(list);
+  const data: TableValues[] = generateTableValues(list, false);
   if (list.length != 0) {
     return (
       <>
