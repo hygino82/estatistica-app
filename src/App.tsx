@@ -1,10 +1,10 @@
 import "./App.css";
-import { MockDescriptivePage } from "./pages/MockDescriptivePage";
+import { DescriptiveForm } from "./pages/DescriptiveForm";
 
 function App() {
   return (
     <>
-      <MockDescriptivePage />
+      <DescriptiveForm />
     </>
   );
 }

@@ -1,5 +1,9 @@
 import { useState } from "react";
 import { DescriptiveItem } from "../../types/custom-types";
+import { DescriptiveTable } from "../../components/DescriptiveTable";
+import { generateDescriptiveTableValues, getTotalElements } from "../../utils/tools";
+import { BarChart } from "../../components/BarChart";
+import { PieChart } from "../../components/PieChart";
 
 export function DescriptiveForm() {
     const [quantidade, setQuantidade] = useState<number>(0);
@@ -8,44 +12,47 @@ export function DescriptiveForm() {
     const [lista, setLista] = useState<DescriptiveItem[]>([]);
     const [titulo, setTitulo] = useState<string>("");
 
+
     function handleQuantidade(e: any) {
         e.preventDefault();
         setQuantidade(Number(e.target.value));
-      }
-    
-      function handleValor(e: any) {
+    }
+
+    function handleValor(e: any) {
         e.preventDefault();
         setValor(e.target.value);
-      }
-    
-      function handleTitulo(e: any) {
+    }
+
+    function handleTitulo(e: any) {
         e.preventDefault();
         setTitulo(e.target.value);
-      }
-    
-      function handleSubmit(e: any) {
+    }
+
+    function handleSubmit(e: any) {
         e.preventDefault();
-    
+
         const item: DescriptiveItem = {
-          quantity: quantidade,
-          value: valor,
+            quantity: quantidade,
+            value: valor.toUpperCase(),
         };
-    
+
         setLista([...lista, item]);
-      }
-    
-      function clearFields(e: any) {
+    }
+
+    function clearFields(e: any) {
         e.preventDefault();
         setQuantidade(0);
         setValor('');
-      }
-    
-      function resetValues(e: any) {
+    }
+
+    function resetValues(e: any) {
         e.preventDefault();
         setLista([]);
         clearFields(e);
-      }
+    }
 
+    const tableValues = generateDescriptiveTableValues(lista);
+    const quantidadeModa = getTotalElements(lista);
     return (
         <>
             <form>
@@ -100,7 +107,11 @@ export function DescriptiveForm() {
                     </button>
                 </div>
             </form>
-            
+            <h3>{titulo.toUpperCase()}</h3>
+            <p>Quantidade adicionada {quantidadeModa.quantidade}</p>
+            <DescriptiveTable list={tableValues} />
+            <BarChart list={tableValues} />
+            <PieChart list={tableValues} />
         </>
     )
 }
