@@ -1,11 +1,13 @@
 import "./App.css";
-import { DescriptiveForm } from "./pages/DescriptiveForm";
+import { NavBar } from "./components/NavBar";
+import { Outlet } from "react-router-dom";
 
 function App() {
   return (
-    <>
-      <DescriptiveForm />
-    </>
+    <div className="App">
+      <NavBar />
+      <Outlet />
+    </div>
   );
 }
 
