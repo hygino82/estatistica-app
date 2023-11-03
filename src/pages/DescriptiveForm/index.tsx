@@ -8,7 +8,6 @@ import { PieChart } from "../../components/PieChart";
 export function DescriptiveForm() {
     const [quantidade, setQuantidade] = useState<number>(0);
     const [valor, setValor] = useState<string>('');
-    const atualiza = useState<any>();
     const [lista, setLista] = useState<DescriptiveItem[]>([]);
     const [titulo, setTitulo] = useState<string>("");
 

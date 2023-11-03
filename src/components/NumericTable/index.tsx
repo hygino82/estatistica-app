@@ -23,7 +23,7 @@ export function NumericTable({ list }: NumericListItem) {
                 <tr key={item.quantity}>
                   <th scope="row">{item.value}</th>
                   <td>{item.quantity}</td>
-                  <td>{item.value * item.quantity}</td>
+                  <td>{Number(item.value) * item.quantity}</td>
                   <td>{item.quadDif}</td>
                   <td>{item.percentual.toFixed(1)}%</td>
                   <td>{item.angle.toFixed(1)}º</td>
