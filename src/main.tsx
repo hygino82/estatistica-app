@@ -11,11 +11,11 @@ import { NumericForm } from './pages/NumericForm/index.tsx';
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <App />,
     children: [
       {
-        path: "/estatistica-app",
+        path: "/estatistica-app/descriptive-form",
         element: <DescriptiveForm />,
       },
       {

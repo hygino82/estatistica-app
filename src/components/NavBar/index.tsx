@@ -4,7 +4,7 @@ export function NavBar() {
             <div className="collapse navbar-collapse" id="navbarNav">
                 <ul className="navbar-nav">
                     <li className="nav-item active">
-                        <a className="nav-link" href="/estatistica-app">
+                        <a className="nav-link" href="/estatistica-app/descriptive-form">
                             Formulário descritivo
                         </a>
                     </li>
