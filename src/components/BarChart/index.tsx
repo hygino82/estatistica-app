@@ -26,7 +26,7 @@ export function BarChart({ list }: NumericListItem | DescriptiveItemList) {
       },
     },
   };
-  console.log(`Elementos na lista :${list.length}`);
+  //console.log(`Elementos na lista :${list.length}`);
   if (list.length != 0) {
     return (
       <Chart

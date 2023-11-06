@@ -16,11 +16,7 @@ export function MockPage() {
       value: 6,
     },
     {
-      quantity: 2,
-      value: 8,
-    },
-    {
-      quantity: 4,
+      quantity: 6,
       value: 8,
     },
     {

@@ -4,13 +4,13 @@ export function NavBar() {
             <div className="collapse navbar-collapse" id="navbarNav">
                 <ul className="navbar-nav">
                     <li className="nav-item active">
-                        <a className="nav-link" href="/estatistica-app/numeric-form">
-                            Formulário numérico
+                        <a className="nav-link" href="/estatistica-app">
+                            Formulário descritivo
                         </a>
                     </li>
                     <li className="nav-item active">
-                        <a className="nav-link" href="/estatistica-app">
-                            Formulário descritivo
+                        <a className="nav-link" href="/estatistica-app/numeric-form">
+                            Formulário numérico
                         </a>
                     </li>
                     <li className="nav-item">
@@ -22,7 +22,7 @@ export function NavBar() {
                         <a className="nav-link" href="/estatistica-app/descriptive-mock">
                             Descriptive Mock
                         </a>
-                    </li>                                    
+                    </li>
                 </ul>
             </div>
         </nav>
