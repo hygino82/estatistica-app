@@ -38,3 +38,8 @@ export type TableValuesList = {
 export type DescriptiveItemList = {
   list: DescriptiveItem[];
 };
+
+export type Intervalo = {
+  inicial: number;
+  final: number;
+};

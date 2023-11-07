@@ -8,12 +8,17 @@ import { DescriptiveForm } from './pages/DescriptiveForm/index';
 import { MockDescriptivePage } from './pages/MockDescriptivePage/index.tsx';
 import { MockPage } from './pages/MockPage/index.tsx';
 import { NumericForm } from './pages/NumericForm/index.tsx';
+import { Histogram } from './pages/Histogram/index.tsx';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
     children: [
+      {
+        path: "/estatistica-app",
+        element: <Histogram />,
+      },
       {
         path: "/estatistica-app/descriptive-form",
         element: <DescriptiveForm />,
