@@ -22,7 +22,7 @@ export function BarChart({ list }: NumericListItem | DescriptiveItemList) {
   const options = {
     plotOptions: {
       bar: {
-        horizontal: true,
+        horizontal: false,
       },
     },
   };

@@ -153,3 +153,16 @@ export function gerarIntervalos(
     return [];
   }
 }
+
+export function generateHistogramValues(list: Intervalo[]):DescriptiveItem[]{
+  let values: DescriptiveItem[] = [];
+  list.map(element => {
+    const item: DescriptiveItem = {
+      value: `${element.inicial} |-- ${element.final}`,
+      quantity: element.amount
+    };
+    values.push(item);
+  });
+
+  return values;
+}

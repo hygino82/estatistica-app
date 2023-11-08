@@ -1,5 +1,8 @@
+import { BarChart } from "../../components/BarChart";
 import { HistogramTable } from "../../components/HistogramTable";
-import { Intervalo } from "../../types/custom-types";
+import { PieChart } from "../../components/PieChart";
+import { DescriptiveItem, Intervalo } from "../../types/custom-types";
+import { generateHistogramValues } from "../../utils/tools";
 
 export const MockHistogram = () => {
     const list: Intervalo[] = [
@@ -29,9 +32,15 @@ export const MockHistogram = () => {
             amount: 5
         }
     ];
+
+    const tableValues: DescriptiveItem[] = generateHistogramValues(list);
+
     return (
         <>
             <HistogramTable list={list} />
+            <BarChart list={tableValues} />
+            <PieChart list={tableValues} />
         </>
     );
 }
+
