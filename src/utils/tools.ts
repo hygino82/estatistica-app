@@ -1,6 +1,7 @@
 import {
   DescriptiveElement,
   DescriptiveItem,
+  Intervalo,
   NumericItem,
   TableValues,
 } from "../types/custom-types";
@@ -123,3 +124,32 @@ type QuantidadeModa = {
   quantidade: number;
   moda: string[];
 };
+
+export function gerarIntervalos(
+  min: number,
+  max: number,
+  intervalo: number,
+  listaElementos: number[]
+): Intervalo[] {
+  let lista: Intervalo[] = [];
+  let a = min;
+  let b = min;
+  if (a < b) {
+    while (b <= max) {
+      a = b;
+      b = a + intervalo;
+      let amount = listaElementos.filter((x) => x >= a && x < b); //filtra os elementos que estejam no intervalo
+      if (amount.length !== 0) {
+        lista.push({
+          inicial: a,
+          final: b,
+          amount: amount.length,
+        });
+      }
+    }
+    return lista;
+  } else {
+    alert("O valor inicial deve ser menor que o final");
+    return [];
+  }
+}

@@ -42,4 +42,5 @@ export type DescriptiveItemList = {
 export type Intervalo = {
   inicial: number;
   final: number;
+  amount:number;
 };

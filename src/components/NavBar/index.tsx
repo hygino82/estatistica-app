@@ -28,6 +28,11 @@ export function NavBar() {
                             Descriptive Mock
                         </a>
                     </li>
+                    <li className="nav-item">
+                        <a className="nav-link" href="/estatistica-app/histogram-mock">
+                            Histogram Mock
+                        </a>
+                    </li>
                 </ul>
             </div>
         </nav>

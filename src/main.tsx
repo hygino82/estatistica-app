@@ -9,6 +9,7 @@ import { MockDescriptivePage } from './pages/MockDescriptivePage/index.tsx';
 import { MockPage } from './pages/MockPage/index.tsx';
 import { NumericForm } from './pages/NumericForm/index.tsx';
 import { Histogram } from './pages/Histogram/index.tsx';
+import { MockHistogram } from './pages/MockHistogram/index.tsx';
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
       {
         path: "/estatistica-app/numeric-mock",
         element: <MockPage />,
+      },
+      {
+        path: "/estatistica-app/histogram-mock",
+        element: <MockHistogram />,
       },
     ],
   },
