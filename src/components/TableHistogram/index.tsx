@@ -1,21 +1,16 @@
-import { Intervalo } from "../../types/custom-types";
+import { Intervalos, TableData } from "../../types/custom-types";
+import { generateFrequencyTableData } from "../../utils/tools";
 
-type TableData = {
-    frequencia: number;
-    frequenciaAcumulada: number;
-    frequenciaRelativa: number;
-    frequenciaPercentual: number;
-    frequenciaPercentualAcumulada: number;
-}
 
-export function TableHistogram({ lista }: Intervalo[]) {
+export function TableHistogram({ lista }: Intervalos) {
+
+    const tableValues: TableData[] = generateFrequencyTableData(lista);
     return (
         <>
             <table className="table table-striped">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Pesquisa</th>
                         <th scope="col">F</th>
                         <th scope="col">Fa</th>
                         <th scope="col">Fr</th>
@@ -24,15 +19,18 @@ export function TableHistogram({ lista }: Intervalo[]) {
                     </tr>
                 </thead>
                 <tbody id="corpo-tabela">
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                    </tr>
+                    {tableValues.map(x => {
+                        return (
+                            <tr>
+                                <th scope="row">{`${x.inicial} |-- ${x.final}`}</th>
+                                <td>{x.frequencia}</td>
+                                <td>{x.frequenciaAcumulada}</td>
+                                <td>{x.frequenciaRelativa}</td>
+                                <td>{x.frequenciaPercentual}%</td>
+                                <td>{x.frequenciaPercentualAcumulada}%</td>
+                            </tr>
+                        );
+                    })}
                 </tbody>
             </table>
         </>

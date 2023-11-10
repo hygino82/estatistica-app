@@ -2,7 +2,9 @@ import {
   DescriptiveElement,
   DescriptiveItem,
   Intervalo,
+  Intervalos,
   NumericItem,
+  TableData,
   TableValues,
 } from "../types/custom-types";
 
@@ -154,7 +156,7 @@ export function gerarIntervalos(
   }
 }
 
-export function generateHistogramValues(list: Intervalo[]):DescriptiveItem[]{
+export function generateHistogramValues(list: Intervalo[]): DescriptiveItem[] {
   let values: DescriptiveItem[] = [];
   list.map(element => {
     const item: DescriptiveItem = {
@@ -165,4 +167,36 @@ export function generateHistogramValues(list: Intervalo[]):DescriptiveItem[]{
   });
 
   return values;
+}
+
+export function generateFrequencyTableData( lista : Intervalo[]): TableData[] {
+  const totalElementos: number = soma(lista);
+  let somaAbsoluta = 0.0;
+  let somaPercentual = 0.0;
+  let tableDataList: TableData[] = [];
+
+  lista.forEach(item => {
+    somaAbsoluta += item.amount;
+    somaPercentual += item.amount / totalElementos * 100.0;
+
+    const intervalo: TableData = {
+      frequencia: item.amount,
+      frequenciaRelativa: item.amount / totalElementos,
+      frequenciaAcumulada: somaAbsoluta,
+      frequenciaPercentual: item.amount / totalElementos * 100.0,
+      frequenciaPercentualAcumulada: somaPercentual,
+      inicial:item.inicial,
+      final:item.final
+    };
+    
+    tableDataList.push(intervalo);
+  })
+
+  return tableDataList;
+}
+
+function soma(lista: Intervalo[]): number {
+  let somaAbsoluta = 0.0;
+  lista.map(item => somaAbsoluta += item.amount);
+  return somaAbsoluta;
 }

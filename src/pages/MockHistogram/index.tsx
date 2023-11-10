@@ -1,6 +1,7 @@
 import { BarChart } from "../../components/BarChart";
 import { HistogramTable } from "../../components/HistogramTable";
 import { PieChart } from "../../components/PieChart";
+import { TableHistogram } from "../../components/TableHistogram";
 import { DescriptiveItem, Intervalo } from "../../types/custom-types";
 import { generateHistogramValues } from "../../utils/tools";
 
@@ -37,7 +38,7 @@ export const MockHistogram = () => {
 
     return (
         <>
-            <HistogramTable list={list} />
+            <TableHistogram lista={list} />
             <BarChart list={tableValues} />
             <PieChart list={tableValues} />
         </>

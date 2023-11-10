@@ -42,5 +42,19 @@ export type DescriptiveItemList = {
 export type Intervalo = {
   inicial: number;
   final: number;
-  amount:number;
+  amount: number;
 };
+
+export type Intervalos = {
+  lista: Intervalo[];
+}
+
+export type TableData = {
+  frequencia: number;
+  frequenciaAcumulada: number;
+  frequenciaRelativa: number;
+  frequenciaPercentual: number;
+  frequenciaPercentualAcumulada: number;
+  inicial: number;
+  final: number;
+}
