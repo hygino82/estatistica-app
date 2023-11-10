@@ -2,10 +2,9 @@ import {
   DescriptiveElement,
   DescriptiveItem,
   Intervalo,
-  Intervalos,
   NumericItem,
   TableData,
-  TableValues,
+  TableValues
 } from "../types/custom-types";
 
 export function agruparSemelhantes(data: NumericItem[]): NumericItem[] {

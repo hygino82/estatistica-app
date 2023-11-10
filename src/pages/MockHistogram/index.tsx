@@ -1,5 +1,4 @@
 import { BarChart } from "../../components/BarChart";
-import { HistogramTable } from "../../components/HistogramTable";
 import { PieChart } from "../../components/PieChart";
 import { TableHistogram } from "../../components/TableHistogram";
 import { DescriptiveItem, Intervalo } from "../../types/custom-types";
