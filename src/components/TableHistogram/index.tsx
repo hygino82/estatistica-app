@@ -21,7 +21,7 @@ export function TableHistogram({ lista }: Intervalos) {
                 <tbody id="corpo-tabela">
                     {tableValues.map(x => {
                         return (
-                            <tr>
+                            <tr key={x.inicial}>
                                 <th scope="row">{`${x.inicial} |-- ${x.final}`}</th>
                                 <td>{x.frequencia}</td>
                                 <td>{x.frequenciaAcumulada}</td>
