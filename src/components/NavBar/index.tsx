@@ -1,4 +1,5 @@
 import {
+    Link,
     Route,
     BrowserRouter as Router,
     Routes
@@ -15,33 +16,15 @@ export const NavBar = () => {
             <Router>
                 <nav className="navbar navbar-expand-lg navbar-light bg-light">
                     <div className="collapse navbar-collapse">
-                        <ul className='navbar-nav'>
-                            <li className="nav-item active">
-                                <a className="nav-link" href="/estatistica-app">
-                                    Formulário descritivo
-                                </a>
-                            </li>
-                            <li className="nav-item active">
-                                <a className="nav-link" href="/estatistica-app/numeric-form">
-                                    Formulário numérico
-                                </a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link" href="/estatistica-app/numeric-mock">
-                                    Numeric Mock
-                                </a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link" href="/estatistica-app/descriptive-mock">
-                                    Descriptive Mock
-                                </a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link" href="/estatistica-app/histogram-mock">
-                                    Histogram Mock
-                                </a>
-                            </li>
-                        </ul>
+                        <nav>
+                            <ul>
+                                <li><Link to="/estatistica-app">Formulário descritivo</Link></li>
+                                <li><Link to="/estatistica-app/numeric-form" >Formulario numérico</Link></li>
+                                <li><Link to="/estatistica-app/descriptive-mock" >Descriptive Mock</Link></li>
+                                <li><Link to="/estatistica-app/numeric-mock" >Numeric Mock</Link></li>
+                                <li><Link to="/estatistica-app/histogram-mock" >Histogram Mock</Link></li>
+                            </ul>
+                        </nav>
                     </div>
                 </nav>
 
