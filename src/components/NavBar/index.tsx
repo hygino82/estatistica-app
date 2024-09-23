@@ -19,7 +19,7 @@ export const NavBar = () => {
                         <nav>
                             <ul>
                                 <li><Link to="/estatistica-app">Formulário descritivo</Link></li>
-                                <li><Link to="/estatistica-app/numeric-form" >Formulario numérico</Link></li>
+                                <li><Link to="/estatistica-app/numeric-form" >Formulário numérico</Link></li>
                                 <li><Link to="/estatistica-app/descriptive-mock" >Descriptive Mock</Link></li>
                                 <li><Link to="/estatistica-app/numeric-mock" >Numeric Mock</Link></li>
                                 <li><Link to="/estatistica-app/histogram-mock" >Histogram Mock</Link></li>

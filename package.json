@@ -15,6 +15,7 @@
   "dependencies": {
     "bootstrap": "^5.3.2",
     "chart.js": "^4.4.0",
+    "estatistica-app": "file:",
     "react": "^18.2.0",
     "react-apexcharts": "^1.4.1",
     "react-dom": "^18.2.0",
