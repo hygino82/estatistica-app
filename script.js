@@ -11,12 +11,9 @@ let btnAcicionar = document.getElementById('btn-adicionar');
 let tabela = document.getElementById('tabela');
 let resultado = document.getElementById('resultado');
 let chartInstance = null;
+let tblResultado = document.getElementById('tbl-resultado');
 
-let listaCampos = [
-    new Campo(5, 2),
-    new Campo(7, 3),
-    new Campo(8, 4),
-];
+let listaCampos = [];
 
 
 const adicionarCampo = () => {
@@ -99,6 +96,7 @@ const removerCampo = (valor) => {
 
 const mostrarTabela = () => {
     let totalElementos = 0;
+    tblResultado.hidden = false;
 
     for (let x of listaCampos) {
         totalElementos += x.quantidade;
