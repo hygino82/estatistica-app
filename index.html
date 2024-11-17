@@ -6,6 +6,7 @@
           integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <title>Analise de Dados</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div class="container">
@@ -16,7 +17,6 @@
         <input type="number" id="quantidade" required><br/>
         <input type="button" class="btn btn-primary" id="btn-adicionar" value="Adicionar"/>
         <button type="button" class="btn btn-warning" onclick="limparCampos()">Limpar</button>
-        <input type="button" class="btn btn-success" onclick="calcularValores()" value="Calcular"/>
     </form>
 
     <div id="resultado"></div>
@@ -28,6 +28,7 @@
                 <th scope="col">Valor</th>
                 <th scope="col">Quantidade</th>
                 <th scope="col">Percentual</th>
+                <th scope="col">Ângulo</th>
                 <th scope="col">Ação</th>
             </tr>
             </thead>

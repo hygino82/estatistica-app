@@ -10,6 +10,7 @@ let txtQuantidade = document.getElementById('quantidade');
 let btnAcicionar = document.getElementById('btn-adicionar');
 let tabela = document.getElementById('tabela');
 let resultado = document.getElementById('resultado');
+let chartInstance = null;
 
 let listaCampos = [
     new Campo(5, 2),
@@ -36,13 +37,22 @@ const adicionarCampo = () => {
     }
     txtValor.value = '';
     txtQuantidade.value = '';
+
     mostrarTabela();
+    calcularValores();
 
     const labels = listaCampos.map(campo => campo.valor); // Rótulos (valores)
     const dataValues = listaCampos.map(campo => campo.quantidade); // Dados (quantidades)
 
     const ctx = document.getElementById('myChart').getContext('2d');
-    const myChart = new Chart(ctx, {
+
+    // Destroi o gráfico existente se houver um
+    if (chartInstance !== null) {
+        chartInstance.destroy();
+    }
+
+    // Cria um novo gráfico
+    chartInstance = new Chart(ctx, {
         type: 'pie',
         data: {
             labels: labels, // Rótulos extraídos do campo "valor"
@@ -98,11 +108,13 @@ const mostrarTabela = () => {
         tabela.innerHTML = '';
         for (let x of listaCampos) {
             const percentual = 100 * x.quantidade / totalElementos;
+            const angulo = 360 * x.quantidade / totalElementos;
             tabela.innerHTML += `
             <tr>
                 <th scope="row">${x.valor}</th>
                 <td>${x.quantidade}</td>
                 <td>${percentual.toFixed(4)}%</td>
+                 <td>${angulo.toFixed(4)}º</td>
                 <td><button class="btn btn-danger" onclick="removerCampo(${x.valor})">Remover</button></td>
             </tr>
         `;
@@ -143,9 +155,9 @@ function calcularValores() {
         const desvioPadrao = Math.sqrt(variancia);
 
         resultado.innerHTML = `
-                            <p>Média = ${media.toFixed(5)}</p>
-                            <p>Variância = ${variancia.toFixed(5)}</p>
-                            <p>Desvio padrão = ${desvioPadrao.toFixed(5)}</p>
+                            <p><strong>Média</strong> = ${media.toFixed(5)}</p>
+                            <p><strong>Variância</strong> = ${variancia.toFixed(5)}</p>
+                            <p><strong>Desvio padrão </strong>= ${desvioPadrao.toFixed(5)}</p>
     `;
 
     } else {
