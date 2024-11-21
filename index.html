@@ -15,21 +15,22 @@
         <input type="number" id="valor" required><br/>
         <label for="quantidade">Quantidade</label><br/>
         <input type="number" id="quantidade" required><br/>
-        <input type="button" class="btn btn-primary" id="btn-adicionar" value="Adicionar"/>
+        <input type="button" class="btn btn-primary"  value="Adicionar" onclick="adicionar()"/>
         <button type="button" class="btn btn-warning" onclick="limparCampos()">Limpar</button>
     </form>
 
     <div id="resultado"></div>
 
     <div class="container">
-        <table class="table table-striped table-hover" id="tbl-resultado" hidden>
+        <table class="table table-striped table-hover table-bordered" id="tbl-resultado" >
             <thead>
             <tr>
                 <th scope="col">Valor</th>
                 <th scope="col">Quantidade</th>
+                <th scope="col">Produto</th>
                 <th scope="col">Percentual</th>
                 <th scope="col">Ângulo</th>
-                <th scope="col">Ação</th>
+                <th scope="col">Ações</th>
             </tr>
             </thead>
             <tbody id="tabela">
@@ -38,7 +39,8 @@
     </div>
 
     <canvas id="myChart" width="400" height="400"></canvas>
-    <script src="script.js"></script>
+
 </div>
+<script src="script.js"></script>
 </body>
 </html>
