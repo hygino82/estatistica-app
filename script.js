@@ -5,6 +5,8 @@ class Campo {
     }
 }
 
+let graficoPizza = null;
+
 let lista = [
     new Campo(5, 7),
     new Campo(6, 9),
@@ -77,6 +79,8 @@ function mostrarTabela() {
             alterarQuantidade(id);
         });
     });
+
+    gerarGrafico();
 }
 
 function excluirItem(id) {
@@ -119,3 +123,40 @@ const calcularValores = () => {
    <p>Desvio padrão ${desvioPadrao.toFixed(4)}</p>
   `;
 };
+
+function gerarGrafico() {
+    const labels = lista.map((item) => item.valor);
+    const data = lista.map((item) => item.quantidade);
+    const cores = [
+        "rgba(255, 99, 132, 0.6)",
+        "rgba(54, 162, 235, 0.6)",
+        "rgba(255, 206, 86, 0.6)",
+        "rgba(75, 192, 192, 0.6)",
+        "rgba(153, 102, 255, 0.6)",
+        "rgba(255, 159, 64, 0.6)",
+    ];
+
+    // Destrói o gráfico existente, se houver
+    if (graficoPizza) {
+        graficoPizza.destroy();
+    }
+
+    const ctx = document.getElementById("graficoPizza").getContext("2d");
+    graficoPizza = new Chart(ctx, {
+        type: "pie",
+        data: {
+            labels: labels,
+            datasets: [
+                {
+                    label: "Quantidade",
+                    data: data,
+                    backgroundColor: cores,
+                    borderWidth: 1,
+                },
+            ],
+        },
+        options: {
+            responsive: true,
+        },
+    });
+}
