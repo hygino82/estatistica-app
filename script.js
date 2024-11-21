@@ -28,13 +28,18 @@ function adicionar() {
     lista.push(new Campo(valor, quantidade));
   }
 
+  mostrarTabela();
+  calcularValores();
+}
+
+function mostrarTabela(){
   let tabela = document.getElementById("tabela");
   tabela.innerHTML = "";
   const total = totalElementos();
   lista.forEach((x) => {
     const percentual = (100 * x.quantidade) / total;
     const angulo = (360 * x.quantidade) / total;
-    const produto=x.quantidade * x.valor;
+    const produto = x.quantidade * x.valor;
     tabela.innerHTML += `
          <tr>
             <th scope="row">${x.valor}</th>
@@ -53,7 +58,6 @@ function adicionar() {
          </tr>
         `;
   });
-  calcularValores();
 }
 
 function excluir(index) {
