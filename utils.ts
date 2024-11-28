@@ -1,9 +1,13 @@
 class CampoDescritivo {
-    constructor(readonly valor: string, readonly quantidade: number) {
+    valor: string;
+    quantidade: number;
+
+    constructor(valor: string, quantidade: number) {
         this.valor = valor;
         this.quantidade = quantidade;
     }
 }
+
 
 let lista: CampoDescritivo[] = [
     new CampoDescritivo('Banana', 7),
@@ -11,6 +15,28 @@ let lista: CampoDescritivo[] = [
     new CampoDescritivo('Melancia', 4),
     new CampoDescritivo('Manga', 6)
 ];
+
+const adicionarElemento = () => {
+    // Captura os valores dos inputs
+    let descricao: string = (document.getElementById('descricao') as HTMLInputElement).value;
+    let quantidade: number = Number((document.getElementById('quantidade') as HTMLInputElement).value);
+
+    // Verifica se o campo já existe na lista
+    // @ts-ignore
+    let campoExistente = lista.find((campo) => campo.valor === descricao);
+
+    if (campoExistente) {
+        // Atualiza a quantidade do item existente
+        campoExistente.quantidade += quantidade;
+    } else {
+        // Adiciona um novo elemento na lista
+        lista.push(new CampoDescritivo(descricao, quantidade));
+    }
+
+    // Atualiza a tabela
+    gerarTabela();
+};
+
 
 function contarTotalElementos(lista: CampoDescritivo[]): number {
     let soma: number = 0;

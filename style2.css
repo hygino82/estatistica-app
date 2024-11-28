@@ -1,0 +1,9 @@
+#entrada {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: limegreen;
+    border: black solid 2px;
+    text-align: center;
+    border-radius: 6px;
+    margin: 3px;
+    padding: 3px;
+}

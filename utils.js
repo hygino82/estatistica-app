@@ -2,8 +2,6 @@ var CampoDescritivo = /** @class */ (function () {
     function CampoDescritivo(valor, quantidade) {
         this.valor = valor;
         this.quantidade = quantidade;
-        this.valor = valor;
-        this.quantidade = quantidade;
     }
     return CampoDescritivo;
 }());
@@ -13,6 +11,24 @@ var lista = [
     new CampoDescritivo('Melancia', 4),
     new CampoDescritivo('Manga', 6)
 ];
+var adicionarElemento = function () {
+    // Captura os valores dos inputs
+    var descricao = document.getElementById('descricao').value;
+    var quantidade = Number(document.getElementById('quantidade').value);
+    // Verifica se o campo já existe na lista
+    // @ts-ignore
+    var campoExistente = lista.find(function (campo) { return campo.valor === descricao; });
+    if (campoExistente) {
+        // Atualiza a quantidade do item existente
+        campoExistente.quantidade += quantidade;
+    }
+    else {
+        // Adiciona um novo elemento na lista
+        lista.push(new CampoDescritivo(descricao, quantidade));
+    }
+    // Atualiza a tabela
+    gerarTabela();
+};
 function contarTotalElementos(lista) {
     var soma = 0;
     lista.forEach(function (campo) { return soma += campo.quantidade; });
