@@ -23,7 +23,7 @@ const adicionarElemento = () => {
 
     // Verifica se o campo já existe na lista
     // @ts-ignore
-    let campoExistente = lista.find((campo) => campo.valor === descricao);
+    let campoExistente = lista.find((campo) => campo.valor.toUpperCase() === descricao.toUpperCase());
 
     if (campoExistente) {
         // Atualiza a quantidade do item existente

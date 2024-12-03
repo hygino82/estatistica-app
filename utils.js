@@ -17,7 +17,7 @@ var adicionarElemento = function () {
     var quantidade = Number(document.getElementById('quantidade').value);
     // Verifica se o campo já existe na lista
     // @ts-ignore
-    var campoExistente = lista.find(function (campo) { return campo.valor === descricao; });
+    var campoExistente = lista.find(function (campo) { return campo.valor.toUpperCase() === descricao.toUpperCase(); });
     if (campoExistente) {
         // Atualiza a quantidade do item existente
         campoExistente.quantidade += quantidade;
